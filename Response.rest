@@ -1,0 +1,17 @@
+POST  http://localhost:5001/api/favourites
+Content-Type: application/json
+
+{
+    "userId": "user123",
+    "recipeId": "456",
+    "title": "Delicious Pancakes",
+    "image": "http://example.com/pancakes.jpg",
+    "cookTime": 20,
+    "servings": 4
+}
+
+###
+DELETE   http://localhost:5001/api/favourites/user123/456
+
+###
+GET  http://localhost:5001/api/favourites/user123
