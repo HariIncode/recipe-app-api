@@ -3,6 +3,7 @@ import cors from 'cors';
 import { ENV } from './config/env.js';
 import { db } from './config/db.js';
 import { favouritesTable } from './db/schema.js';
+import job from './config/cron.js';
 
 import { eq, and } from 'drizzle-orm';
 
@@ -11,6 +12,8 @@ const PORT = ENV.PORT || 5001;
 
 app.use(express.json());
 app.use(cors())
+
+if(ENV.NODE_ENV === 'production') job.start();
 
 app.get('/api/health', (req, res) => {
   res.status(200).send('Server is healthy');
